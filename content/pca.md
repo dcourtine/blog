@@ -108,7 +108,7 @@ $$
 <center>Pour trouver $\lambda$ il suffit donc de résoudre : </center>
 
 $$
-(a - \lambda)(c - \lambda) - bc = 0
+(a - \lambda)(d - \lambda) - bc = 0
 $$
 
 En remplaçant lambda dans l'équation d'origine, nous trouvons alors les vecteurs propres associés.     
@@ -157,7 +157,8 @@ Passons à la pratique pour voir, en réalisant toutes ces opérations en Python
 Nous allons utiliser le [jeux de données iris](https://fr.wikipedia.org/wiki/Iris_de_Fisher) contenant 50 observations de fleurs et 4 variables (ou 4 dimensions) et les réduire sur une espace à deux dimensions. 
 
 ```python
-import numpy as np 
+import numpy as np
+import altair as alt
 from numpy import linalg as LA
 from sklearn import datasets
 from sklearn.decomposition import PCA
@@ -181,7 +182,7 @@ eigen_values, eigen_vectors = LA.eig(cov_matrix)
 # Calcul de l'information récupéré en pourcentage sur les 2 premiers axes
 info = (eigen_values / sum(eigen_values) * 100).round(2)
 axe1_info = info[0]
-axe2_info = info[2]
+axe2_info = info[1]
 
 # Projection des points sur les deux premiers vecteurs 
 projection_matrix = eigen_vectors.T[:][:2].T
